@@ -1,0 +1,36 @@
+<h2>Debit amount using slip</h2>
+<div class="row" >
+    <div class="col-sm-1"></div>
+    <div class="col-sm-1" >
+      <div  style="width: 400px;">
+        <form [formGroup]="slipForm"  (ngSubmit)="done()">
+    
+          <div class="form-group">
+            <label for="slipNo">Slip Number<span style="color:red">*</span></label>
+            <input type="text" class="form-control"  formControlName="slipId" data-toggle="tooltip" 
+              data-placement="right" placeholder="Enter slip number" >
+              <div *ngIf="slipForm.controls['slipId'].hasError('pattern')">
+               <span [ngStyle]="{'margin-left':'40px','color':'red'}">slip id should be of 6 digit numericals</span>
+              </div>
+             <br>
+            <label for="accountNo">Account Number<span style="color:red">*</span></label>
+              <input type="text" class="form-control"  formControlName="accountNo" data-toggle="tooltip" 
+                 data-placement="right" placeholder="Enter account number" >
+               <div *ngIf="slipForm.controls['accountNo'].hasError('pattern')">
+                 <span [ngStyle]="{'margin-left':'40px','color':'red'}">accountNo should be of 12 digit numericals</span>
+               </div>
+             <br>
+             <label for="amount">Amount<span style="color:red">*</span></label>
+             <input type="text" class="form-control"  formControlName="amount" data-toggle="tooltip" 
+                    data-placement="right" placeholder="Enter amount" >
+             <div *ngIf="slipForm.controls['amount'].hasError('pattern')">
+               <span [ngStyle]="{'margin-left':'40px','color':'red'}">enter valid amount</span>
+             </div>
+         </div>
+    
+          <button type="submit" class="btn btn-success" [disabled]="slipForm.invalid" >Done</button>
+          &nbsp;<button class="btn btn-primary" type="reset" (click)="reset()" >Reset</button>
+        </form>
+    </div>
+    </div>
+  </div>

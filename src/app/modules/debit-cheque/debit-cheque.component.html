@@ -1,0 +1,48 @@
+<h2>Debit amount using cheque</h2>
+<div class="row" >
+    <div class="col-sm-1"></div>
+    <div class="col-sm-1" >
+      <div  style="width: 400px;">
+        <form [formGroup]="chequeForm"  (ngSubmit)="done()">
+    
+            <div class="form-group">
+               <label for="chequeNo">Cheque Number<span style="color:red">*</span></label>
+               <input type="text" class="form-control"  formControlName="chequeNo" data-toggle="tooltip" 
+                 data-placement="right" placeholder="Enter cheque numnber" >
+                <div *ngIf="chequeForm.controls['chequeNo'].hasError('pattern')">
+                  <span [ngStyle]="{'margin-left':'40px','color':'red'}">Cheque no should be of 6 digit numericals</span>
+                </div>
+                <br>
+               <label for="accountNo">Account Number<span style="color:red">*</span></label>
+                 <input type="text" class="form-control"  formControlName="accountNo" data-toggle="tooltip" 
+                    data-placement="right" placeholder="Enter account numnber" >
+                <div *ngIf="chequeForm.controls['accountNo'].hasError('pattern')">
+                   <span [ngStyle]="{'margin-left':'40px','color':'red'}">account no should be of 10 digit numericals</span>
+                </div>
+                <br>
+                <label for="amount">Amount<span style="color:red">*</span></label>
+                <input type="text" class="form-control"  formControlName="amount" data-toggle="tooltip" 
+                       data-placement="right" placeholder="Enter amount" >
+                <div *ngIf="chequeForm.controls['amount'].hasError('pattern')">
+                  <span [ngStyle]="{'margin-left':'40px','color':'red'}">Enter valid amount</span>
+                </div>
+                <br>
+                <label for="ifscCode">IFSC Code<span style="color:red">*</span></label>
+                <input type="text" class="form-control"  formControlName="ifscCode" data-toggle="tooltip" 
+                      data-placement="right" placeholder="Enter IFSC Code" >
+                <div *ngIf="chequeForm.controls['ifscCode'].hasError('pattern')">
+                 <span [ngStyle]="{'margin-left':'40px','color':'red'}">Enter valid IFSC Code</span>
+                </div>
+                <br>
+                <label for="date">Cheque issue date<span style="color:red">*</span></label>
+                <input type="date" class="form-control"  formControlName="date" data-toggle="tooltip" 
+                      data-placement="right" placeholder="Enter cheque issue date" min="2020-05-01" >
+                <br>
+            </div>
+    
+            <button type="submit" class="btn btn-success" [disabled]="chequeForm.invalid">Done</button>
+            &nbsp;<button class="btn btn-primary" type="reset" (click)="reset()" >Reset</button>
+        </form>
+    </div>
+    </div>
+  </div>
